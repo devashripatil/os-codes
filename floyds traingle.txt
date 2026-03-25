@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Number of rows for Floyd's triangle
+read -p "Enter the number of rows: " rows
+
+# Initialize the starting number
+num=1
+
+# Print Floyd's triangle
+for (( i=1; i<=rows; i++ )); do
+    for (( j=1; j<=i; j++ )); do
+        echo -n "$num "  # Print the number followed by a space
+        num=$((num + 1))  # Increment the number
+    done
+    echo  # Move to the next line
+done

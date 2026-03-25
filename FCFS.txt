@@ -1,0 +1,78 @@
+#include <stdio.h>
+
+struct Process {
+    int id;         // Process ID
+    int burst;      // Burst time
+    int remaining;  // Remaining time
+};
+
+void findWaitingTime(struct Process proc[], int n, int quantum, int waiting[]) {
+    int remainingProcesses = n;
+    int time = 0;
+
+    while (remainingProcesses > 0) {
+        for (int i = 0; i < n; i++) {
+            if (proc[i].remaining > 0) {
+                if (proc[i].remaining > quantum) {
+                    time += quantum;
+                    proc[i].remaining -= quantum;
+                } else {
+                    time += proc[i].remaining;
+                    waiting[i] = time - proc[i].burst;
+                    proc[i].remaining = 0;
+                    remainingProcesses--;
+                }
+            }
+        }
+    }
+}
+
+void findTurnaroundTime(struct Process proc[], int n, int waiting[], int turnaround[]) {
+    for (int i = 0; i < n; i++) {
+        turnaround[i] = proc[i].burst + waiting[i];
+    }
+}
+
+void findavgTime(struct Process proc[], int n, int quantum) {
+    int waiting[n], turnaround[n];
+
+    // Initialize remaining time
+    for (int i = 0; i < n; i++) {
+        proc[i].remaining = proc[i].burst;
+    }
+
+    findWaitingTime(proc, n, quantum, waiting);
+    findTurnaroundTime(proc, n, waiting, turnaround);
+
+    printf("Process ID\tBurst Time\tWaiting Time\tTurnaround Time\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d\t\t%d\t\t%d\t\t%d\n", 
+               proc[i].id, 
+               proc[i].burst, 
+               waiting[i], 
+               turnaround[i]);
+    }
+}
+
+int main() {
+    int n, quantum;
+
+    printf("Enter the number of processes: ");
+    scanf("%d", &n);
+
+    struct Process proc[n];
+
+    // Input process details
+    for (int i = 0; i < n; i++) {
+        proc[i].id = i + 1; // Assigning process ID
+        printf("Enter burst time for Process %d: ", i + 1);
+        scanf("%d", &proc[i].burst);
+    }
+
+    printf("Enter time quantum: ");
+    scanf("%d", &quantum);
+
+    findavgTime(proc, n, quantum);
+
+    return 0;
+}

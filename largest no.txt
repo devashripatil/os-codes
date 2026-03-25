@@ -1,0 +1,21 @@
+echo "enter number 1"
+read n1
+
+echo "enter number 2"
+read n2
+
+echo "enter number 3"
+read n3
+
+if (( n1 > n2 && n1 > n3))
+then 
+echo "$n1 is largest number"
+
+elif (( n2 >n1 && n2 > n3))
+then
+echo "$n2 is largest number"
+
+else
+echo "$n3 is largest number"
+
+fi

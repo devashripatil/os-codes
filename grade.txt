@@ -1,0 +1,19 @@
+echo "Enter marks:"
+read marks
+
+# Grade determination
+if (( marks > 90 ))
+then
+  echo "Student has scored A grade"
+  
+elif (( marks > 75 && marks <= 90 ))
+then
+  echo "Student has scored B grade"
+  
+elif (( marks > 50 && marks <= 75 ))
+then
+  echo "Student has scored C grade"
+  
+else (( marks <= 50 ))
+  echo "Student has failed"
+fi

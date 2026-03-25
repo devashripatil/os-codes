@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Read the number of terms from the user
+read -p "Enter the number of terms in the Fibonacci series: " n
+
+# Initialize the first two Fibonacci numbers
+a=0
+b=1
+
+# Print the Fibonacci series
+echo "Fibonacci series up to $n terms:"
+
+for (( i=0; i<n; i++ )); do
+    echo -n "$a "  # Print the current Fibonacci number
+    fn=$((a + b))  # Calculate the next Fibonacci number
+    a=$b           # Update a to the next number
+    b=$fn          # Update b to the next number
+done
+
+echo  # Print a newline at the end

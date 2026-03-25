@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Initialize an empty array
+numbers=()
+
+# Fill the array with numbers from 1 to 25
+for (( i=1; i<=25; i++ )); do
+    numbers+=($i)  # Append the current number to the array
+done
+
+# Print the numbers in the array
+echo "Numbers in the array:"
+for number in "${numbers[@]}"; do
+    echo -n "$number "  # Print each number followed by a space
+done
+
+echo  # Print a newline at the end

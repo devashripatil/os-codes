@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Initialize variables
+var1=0
+var2=0
+
+# Control flow statement to initialize variables
+if [ "$1" == "set" ]; then
+    var1=10
+    var2=20
+else
+    var1=5
+    var2=15
+fi
+
+# Output the values of the variables
+echo "Value of var1: $var1"
+echo "Value of var2: $var2"

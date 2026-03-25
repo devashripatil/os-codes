@@ -1,0 +1,10 @@
++echo "enter string"
+read string
+rev=$(expr $string|rev)
+
+if [[ $string == $rev ]]
+   then
+   echo "given string is palindrome"
+else
+   echo "given string is not palindrome"
+fi

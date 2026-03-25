@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Number of rows for Floyd's triangle
+read -p "Enter the number of rows: " rows
+
+# Calculate the total number of elements in the triangle
+total_numbers=$((rows * (rows + 1) / 2))
+
+# Initialize the starting number
+num=$total_numbers
+
+# Print reverse Floyd's triangle
+for (( i=rows; i>=1; i-- )); do
+    # Print the numbers in the current row
+    for (( j=1; j<=i; j++ )); do
+        echo -n "$num "  # Print the number followed by a space
+        num=$((num - 1))  # Decrement the number
+    done
+    echo  # Move to the next line
+done

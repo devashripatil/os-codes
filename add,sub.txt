@@ -1,0 +1,72 @@
+while true
+do
+    # Menu
+    echo "///MENU///:"
+    echo "1. Addition"
+    echo "2. Subtraction"
+    echo "3. Multiply"
+    echo "4. Divide"
+    echo "5. Exit"
+    
+    # User choice input
+    echo "Enter choice from 1, 2, 3, 4, or 5 to exit:"
+    read n
+
+    case $n in
+        1) 
+            # Addition
+            echo "Enter first number:"
+            read a
+            echo "Enter second number:"
+            read b
+            sum=$((a + b))
+            echo "Addition of two numbers is: $sum"
+            ;;
+        
+        2)
+            # Subtraction
+            echo "Enter first number:"
+            read a
+            echo "Enter second number:"
+            read b
+            subt=$((a - b))
+            echo "Subtraction of two numbers is: $subt"
+            ;;
+        
+        3)
+            # Multiplication
+            echo "Enter first number:"
+            read a
+            echo "Enter second number:"
+            read b
+            multi=$((a * b))
+            echo "Multiplication of two numbers is: $multi"
+            ;;
+        
+        4)
+            # Division
+            echo "Enter first number:"
+            read a
+            echo "Enter second number:"
+            read b
+            # Check for division by zero
+            if [ "$b" -eq 0 ]; then
+                echo "Error: Cannot divide by zero!"
+            else
+                div=$((a / b))
+                echo "Division of two numbers is: $div"
+            fi
+            ;;
+        
+        5)
+            # Exit
+            echo "Exiting the program."
+            break
+            ;;
+        
+        *)
+            # Invalid input
+            echo "Invalid choice, please select 1, 2, 3, 4, or 5."
+            ;;
+    esac
+done

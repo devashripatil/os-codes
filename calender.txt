@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Prompt the user for a year
+read -p "Enter the year: " year
+
+# Prompt the user for a month
+read -p "Enter the month (1-12): " month
+
+# Check if the month is valid
+if [[ $month -lt 1 || $month -gt 12 ]]; then
+    echo "Error: Invalid month entered. Month must be between 1 and 12."
+    exit 1
+fi
+
+# Display the calendar for the given month and year
+cal $month $year
